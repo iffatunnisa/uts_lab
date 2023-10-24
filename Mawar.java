@@ -1,10 +1,11 @@
- public abstract class Mawar extends Bunga implements tipeDaun1, jenisAkar2, jumlahPetals1 {
+public abstract class Mawar extends Bunga implements tipeDaun1, jenisAkar1, jumlahPetals1 {
     // Constructor
     public Mawar(String namaBunga, String warnaBunga, String aromaBunga, String namaIlmiah) {
-        this.namaBunga = namaBunga;
-        this.warnaBunga = warnaBunga;
-        this.aromaBunga = aromaBunga;
-        this.namaIlmiah = namaIlmiah;
+        super();
+        setNamaBunga(namaBunga);
+        setWarnaBunga(warnaBunga);
+        setAromaBunga(aromaBunga);
+        setNamaIlmiah(namaIlmiah);
     }
 
     // Implementasi metode abstract dari kelas Bunga
@@ -17,7 +18,6 @@
         System.out.println("Daun Mawar memiliki daun bersirip.");
     }
 
-
     // Implementasi metode dari interface jenisAkar1
     public void akarSerabut() {
         System.out.println("Mawar memiliki jenis akar serabut.");
@@ -28,14 +28,11 @@
         System.out.println("Mawar memiliki 5 hingga 7 kelopak bunga.");
     }
 
-
     // Contoh polymorphism
-    public void tumbuh(String kondisi) {
-        if (kondisi.equals("baik")) {
-            System.out.println("Mawar tumbuh dengan sangat baik.");
-        } else {
-            System.out.println("Mawar tumbuh dengan kondisi yang tidak optimal.");
-        }
+    @Override
+    public void cetak() {
+        System.out.println("Detail Mawar:");
+        super.cetak(); // Memanggil metode cetak dari superclass Bunga
     }
 
     public static void main(String[] args) {
@@ -46,6 +43,6 @@
         mawar.kurangDari10();
 
         // Polymorphism
-        mawar.tumbuh("baik");
+        mawar.cetak();
     }
 }
